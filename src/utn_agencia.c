@@ -25,11 +25,12 @@ void agencia_imprimirMenuOpcionesSeis(float kilometros, float precioAerolinas, f
 
 void agencia_imprimirInforme(char* nombre, float precioUnitario, float debito, float credito, float bitcoin, float unitario)
 {
-	printf("\n\tPrecio %s: %.2f", nombre, precioUnitario);
-	printf("\n\tA) Precio con tarjeta de debito: $%.2f)", debito);
+	printf("\n\t   Precio %s: %.2f", nombre, precioUnitario);
+	printf("\n\tA) Precio con tarjeta de debito: $%.2f", debito);
 	printf("\n\tB) Precio con tarjeta de credito: $%.2f", credito);
 	printf("\n\tC) Precio pagando con bitcoin: $%.2f BTC", bitcoin);
 	printf("\n\tD) Precio unitario: $%.2f", unitario);
+	printf("\n");
 
 }
 
@@ -92,15 +93,22 @@ int agencia_calcularTodo(float kilometros, float precioUsuario, float* precioDeb
 {
 	int retorno = -1;
 
-	// 	DEBITO
-	utn_calcularReglaDeTres(DEBITO_DESCUENTO_MAX, precioUsuario, DEBITO_DESCUENTO, precioDebito);
-	//	CREDITO
-	utn_calcularReglaDeTres(CREDITO_INTERES_MAX, precioUsuario+100, CREDITO_INTERES, precioCredito);
-	// 	BITCOIN
-	utn_calcularReglaDeTres(PESOSBITCOIN, BITCOIN, precioUsuario, precioBitcoin);
-	//	PRECIO UNITARIO
-	utn_calcularReglaDeTres(kilometros, precioUsuario, 1, precioUnitario);
+	if (   ! utn_calcularReglaDeTres(DEBITO_DESCUENTO_MAX, precioUsuario, DEBITO_DESCUENTO, precioDebito)
+		&& ! utn_calcularReglaDeTres(CREDITO_INTERES_MAX, precioUsuario+100, CREDITO_INTERES, precioCredito)
+		&& ! utn_calcularReglaDeTres(PESOSBITCOIN, BITCOIN, precioUsuario, precioBitcoin)
+		&& ! utn_calcularReglaDeTres(kilometros, precioUsuario, 1, precioUnitario)  )
+	{
+		retorno = 0;
+	}
 
+//	// 	DEBITO
+//	utn_calcularReglaDeTres(DEBITO_DESCUENTO_MAX, precioUsuario, DEBITO_DESCUENTO, precioDebito);
+//	//	CREDITO
+//	utn_calcularReglaDeTres(CREDITO_INTERES_MAX, precioUsuario+100, CREDITO_INTERES, precioCredito);
+//	// 	BITCOIN
+//	utn_calcularReglaDeTres(PESOSBITCOIN, BITCOIN, precioUsuario, precioBitcoin);
+//	//	PRECIO UNITARIO
+//	utn_calcularReglaDeTres(kilometros, precioUsuario, 1, precioUnitario);
 
 	return retorno;
 }

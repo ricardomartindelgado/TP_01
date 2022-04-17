@@ -1,8 +1,8 @@
 /*
  * utn_input.h
  *
- *  Created on: 16 abr. 2022
- *      Author: Smaythink
+ *  	Created on: XX abr. 2022
+ *      Author: Martin Delgado
  */
 
 #ifndef UTN_INPUT_H_
