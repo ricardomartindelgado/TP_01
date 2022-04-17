@@ -17,6 +17,14 @@
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "utn_input.h"
+#include "utn_operaciones.h"
+#include "utn_agencia.h"
+
+
+
 int main(void) {
 
 	setbuf(stdout, NULL); //Windows
