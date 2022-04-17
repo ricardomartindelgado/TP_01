@@ -19,8 +19,7 @@
 #define PESOSBITCOIN 4606954.55		//COTIZACION AL DIA 16/04/2022
 #define KILOMETROS_MAX 40075		//CIRCUNFERENCIA DE LA TIERRA
 									//(Ruta mas larga act 2017: Dubái - Auckland: 14.200 km)
-#define FALSE 1
-#define TRUE 0
+
 
 
 

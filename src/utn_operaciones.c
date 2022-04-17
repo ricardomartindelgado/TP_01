@@ -72,16 +72,7 @@ int utn_dividirInt(float* pResultado, int operador1, int operador2)
 }
 
 
-/**
- * @Brief Regla de tres simple directa
- * 			A es B
- * 			C es pResultado
- * @param pResultado
- * @param valorEntrada
- * @param operador1
- * @param operador2
- * @return
- */
+
 int utn_calcularReglaDeTres(float operadorA, float operadorB, float operadorC, float* pResultado)
 {
 	int retorno = -1;
@@ -92,33 +83,6 @@ int utn_calcularReglaDeTres(float operadorA, float operadorB, float operadorC, f
 	}
 	return retorno;
 }
-
-
-
-
-//
-//int utn_calcularPorcentajeDescuento(float* pResultado, float operador1, float porcentaje)
-//{
-//	int retorno = -1;
-//	if (pResultado != NULL)
-//	{
-//		*pResultado = operador1*porcentaje/100;
-//		retorno = 0;
-//	}
-//	return retorno;
-//}
-//
-//
-//int utn_calcularPorcentajeInteres(float* pResultado, float operador1, float porcentaje)
-//{
-//	int retorno = -1;
-//	if (pResultado != NULL)
-//	{
-//		*pResultado = operador1*(porcentaje+100)/100;
-//		retorno = 0;
-//	}
-//	return retorno;
-//}
 
 
 

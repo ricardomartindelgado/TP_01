@@ -59,35 +59,29 @@ int main(void) {
 		//SI NO VALIDO OPCION PUEDE VENIR CARGADA CON BASURA SI NO LA INICIALIZE
 		if (!utn_getInt(&opcion, "Ingrese una opcion ", " >> Opcion Invalida", 1, 6, 0))
 		{
-			//debugBegin
-			printf("\n>> Numero recibido: %d", opcion);
-			//debugEnd
 			switch (opcion)
 			{
 				case 1: // INGRESAR KILOMETROS
-					printf("\n>> swithc: Opcion 1\n");
 					kilometrosRetornoValido = utn_getFloat(&kilometros, "\nIngrese kilometros: ", "Numero invalido", 1, KILOMETROS_MAX, 2);
 					break;
 
 
 				case 2: // INGRESAR PRECIO DE VUELOS
-					printf("\n>> Opcion 2\n");
 					precioAerolinasRetornoValido = utn_getFloat(&precioAerolinasUsuario, "\nIngrese precio Aerolinas: ", "Numero invalido", 1, PRECIO_MAX, 2);
 					precioLatamRetornoValido = utn_getFloat(&precioLatamUsaurio, "\nIngrese precio Latam: ", "Numero invalido", 1, PRECIO_MAX, 2);
 					break;
 
 
 				case 3: // CALCULAR SOLO SI TENGO DATOS CARGADOS
-					printf("\n>> Opcion 3\n");
 					if ( !kilometrosRetornoValido && !precioAerolinasRetornoValido && !precioLatamRetornoValido)
 					{
 						printf("\n>> SI PUEDO Opcion 3 dentro del ..IF..   kilometros+precio\n");
 						if (   ! agencia_calcularTodo(kilometros, precioAerolinasUsuario, &precioAerolinasDebito, &precioAerolinasCredito, &precioAerolinasBitcoin, &precioAerolinasUnitario)
-							&& ! agencia_calcularTodo(kilometros, precioLatamUsaurio, &precioLatamDebito, &precioLatamCredito, &precioLatamBitcoin, &precioLatamUnitario)
-							&& ! utn_restarValorAbsoluto(&diferenciaDePrecio, precioAerolinasUnitario, precioLatamUnitario)  )
+							&& ! agencia_calcularTodo(kilometros, precioLatamUsaurio, &precioLatamDebito, &precioLatamCredito, &precioLatamBitcoin, &precioLatamUnitario)  )
 						{
-							printf("\n>> SI agencia_calcularTodo agencia_calcularTodo utn_restarValorAbsoluto\n");
+							utn_restarValorAbsoluto(&diferenciaDePrecio, precioAerolinasUnitario, precioLatamUnitario);
 							calcularTodoOK = TRUE;
+							printf("\n>> calcularTodoOK: despues %d\n", calcularTodoOK);
 						}
 					}
 					else
@@ -98,23 +92,22 @@ int main(void) {
 					break;
 
 				case 4: // INFORMAR
-					printf("\n>> Opcion 4\n");
-					//system("cls"); //Windows Console
-
-
 					//	INFORMA SOLO SI TENGO DATOS CALCULADOS
 					if(!calcularTodoOK)
 					{
-						agencia_imprimirInforme("AEROLINAS", precioAerolinasUsuario, precioAerolinasDebito, precioAerolinasCredito, precioAerolinasBitcoin, precioAerolinasUnitario);
-						agencia_imprimirInforme("LATAM", precioLatamUsaurio, precioLatamDebito, precioLatamCredito, precioLatamBitcoin, precioLatamUnitario);
+						agencia_imprimirInforme("AEROLINAS ", precioAerolinasUsuario, precioAerolinasDebito, precioAerolinasCredito, precioAerolinasBitcoin, precioAerolinasUnitario);
+						agencia_imprimirInforme("LATAM ", precioLatamUsaurio, precioLatamDebito, precioLatamCredito, precioLatamBitcoin, precioLatamUnitario);
 						printf("\n>> La diferencia de precio es: $%.2f", diferenciaDePrecio);
 						calcularTodoOK = FALSE;
+					}
+					else
+					{
+						printf("\nNo se puede informar porque no se calcularon los datos\n");
 					}
 
 					break;
 
 				case 5: //	CARGA FORZADA DE DATOS
-					printf("\n>> Opcion 5\n");
 					kilometros = 7090;
 					precioAerolinasUsuario = 162965;
 					precioLatamUsaurio = 159339;
@@ -127,8 +120,8 @@ int main(void) {
 
 
 					// 	INFORMAR IMPRIMIR
-					agencia_imprimirInforme("AEROLINAS: ", precioAerolinasUsuario, precioAerolinasDebito, precioAerolinasCredito, precioAerolinasBitcoin, precioAerolinasUnitario);
-					agencia_imprimirInforme("LATAM: ", precioLatamUsaurio, precioLatamDebito, precioLatamCredito, precioLatamBitcoin, precioLatamUnitario);
+					agencia_imprimirInforme("AEROLINAS ", precioAerolinasUsuario, precioAerolinasDebito, precioAerolinasCredito, precioAerolinasBitcoin, precioAerolinasUnitario);
+					agencia_imprimirInforme("LATAM ", precioLatamUsaurio, precioLatamDebito, precioLatamCredito, precioLatamBitcoin, precioLatamUnitario);
 					printf("\n\tLa diferencia de precio es: $%.2f\n", diferenciaDePrecio);
 
 					break;
@@ -140,24 +133,3 @@ int main(void) {
 
 	return EXIT_SUCCESS;
 }
-
-
-
-
-//
-//	//PRUEBA FUNCIONES
-//	float pResultado;
-//	int valor;
-//
-//	printf("\n>> pResultado MAIN valor: %f y direccion %p", pResultado, &pResultado);
-//
-//	valor = agencia_calcularDebito(DEBITO_DESCUENTO_MAX, 70, DEBITO_DESCUENTO, &pResultado);
-//
-//	if ( 0 == valor)
-//	{
-//		printf("\n pude hacer el debito -  valor es: %.2f y salio con: %d", pResultado, valor);
-//	}
-//	else
-//	{
-//		printf("\nNo se pudo realizar esta operacion");
-//	}

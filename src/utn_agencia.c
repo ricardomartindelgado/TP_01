@@ -35,6 +35,36 @@ void agencia_imprimirInforme(char* nombre, float precioUnitario, float debito, f
 }
 
 
+
+int agencia_calcularTodo(float kilometros, float precioUsuario, float* precioDebito, float* precioCredito, float* precioBitcoin, float* precioUnitario)
+{
+	int retorno = -1;
+
+	if (   ! utn_calcularReglaDeTres(DEBITO_DESCUENTO_MAX, precioUsuario, DEBITO_DESCUENTO, precioDebito)
+		&& ! utn_calcularReglaDeTres(CREDITO_INTERES_MAX, precioUsuario+100, CREDITO_INTERES, precioCredito)
+		&& ! utn_calcularReglaDeTres(PESOSBITCOIN, BITCOIN, precioUsuario, precioBitcoin)
+		&& ! utn_calcularReglaDeTres(kilometros, precioUsuario, 1, precioUnitario)  )
+	{
+		retorno = 0;
+	}
+
+//	// 	DEBITO
+//	utn_calcularReglaDeTres(DEBITO_DESCUENTO_MAX, precioUsuario, DEBITO_DESCUENTO, precioDebito);
+//	//	CREDITO
+//	utn_calcularReglaDeTres(CREDITO_INTERES_MAX, precioUsuario+100, CREDITO_INTERES, precioCredito);
+//	// 	BITCOIN
+//	utn_calcularReglaDeTres(PESOSBITCOIN, BITCOIN, precioUsuario, precioBitcoin);
+//	//	PRECIO UNITARIO
+//	utn_calcularReglaDeTres(kilometros, precioUsuario, 1, precioUnitario);
+
+	return retorno;
+}
+
+
+
+
+
+
 //void agencia_imprimirMenuOpcionesDos()
 //{
 //	printf("\n\tPrecio Vuelo Aerolineas", kilometros);
@@ -89,32 +119,6 @@ void agencia_imprimirInforme(char* nombre, float precioUnitario, float debito, f
 
 
 
-int agencia_calcularTodo(float kilometros, float precioUsuario, float* precioDebito, float* precioCredito, float* precioBitcoin, float* precioUnitario)
-{
-	int retorno = -1;
-
-	if (   ! utn_calcularReglaDeTres(DEBITO_DESCUENTO_MAX, precioUsuario, DEBITO_DESCUENTO, precioDebito)
-		&& ! utn_calcularReglaDeTres(CREDITO_INTERES_MAX, precioUsuario+100, CREDITO_INTERES, precioCredito)
-		&& ! utn_calcularReglaDeTres(PESOSBITCOIN, BITCOIN, precioUsuario, precioBitcoin)
-		&& ! utn_calcularReglaDeTres(kilometros, precioUsuario, 1, precioUnitario)  )
-	{
-		retorno = 0;
-	}
-
-//	// 	DEBITO
-//	utn_calcularReglaDeTres(DEBITO_DESCUENTO_MAX, precioUsuario, DEBITO_DESCUENTO, precioDebito);
-//	//	CREDITO
-//	utn_calcularReglaDeTres(CREDITO_INTERES_MAX, precioUsuario+100, CREDITO_INTERES, precioCredito);
-//	// 	BITCOIN
-//	utn_calcularReglaDeTres(PESOSBITCOIN, BITCOIN, precioUsuario, precioBitcoin);
-//	//	PRECIO UNITARIO
-//	utn_calcularReglaDeTres(kilometros, precioUsuario, 1, precioUnitario);
-
-	return retorno;
-}
-
-
-
 
 
 
@@ -125,16 +129,7 @@ int agencia_calcularTodo(float kilometros, float precioUsuario, float* precioDeb
 //	Q: 	ES NECESARIO CREAR UNA FUNCION PARA CADA CALCULAR TENIENDO
 //		EN CUENTA QUE LA FUNCIONALIDAD POR DENTRO ES LA MIMA?
 //	A: 	NO. PERO ES CIERTO QUE HARIA MAS FACIL LEER EL CODIGO. SI?
-/**
- * @fn int agencia_calcularDebito(float, float, float, float*)
- * @brief
- *
- * @param operadorA
- * @param porcentajeMaximo
- * @param porcentajeCalcular
- * @param pResultado
- * @return
- */
+//
 //int agencia_calcularDebito(float operadorA, float porcentajeMaximo, float porcentajeCalcular, float* pResultado)
 //{
 //	int retorno = -1;
@@ -144,7 +139,7 @@ int agencia_calcularTodo(float kilometros, float precioUsuario, float* precioDeb
 //	printf("\n>> pResultado agencia_calcularDebito valor: %f y direccion %p", pResultado, &pResultado);
 //
 //	//debugEnd
-////	bufferFloat = *pResultado;
+//	bufferFloat = *pResultado;
 //
 //	//debugBegin
 //	printf("\n>> bufferFloat agencia_calcularDebito valor: %f y direccion %p", bufferFloat, &bufferFloat);

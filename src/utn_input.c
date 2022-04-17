@@ -11,18 +11,7 @@
 #include <stdlib.h>
 
 
-/**
- * @fn int utn_getInt(int*, char*, char*, int, int, int)
- * @brief
- *
- * @param pResultado
- * @param mensaje
- * @param mensajeError
- * @param minimo
- * @param maximo
- * @param reintentos
- * @return
- */
+
 int utn_getInt(	int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos)
 {
 	int retorno = -1;
@@ -52,18 +41,7 @@ int utn_getInt(	int* pResultado, char* mensaje, char* mensajeError, int minimo, 
 }
 
 
-/**
- * @fn int utn_getFloat(float*, char*, char*, float, float, int)
- * @brief
- *
- * @param pResultado
- * @param mensaje
- * @param mensajeError
- * @param minimo
- * @param maximo
- * @param reintentos
- * @return
- */
+
 int utn_getFloat(float* pResultado, char* mensaje, char* mensajeError, float minimo, float maximo, int reintentos)
 {
 	int retorno = -1;
@@ -93,18 +71,7 @@ int utn_getFloat(float* pResultado, char* mensaje, char* mensajeError, float min
 }
 
 
-/**
- * @fn int utn_getChar(char*, char*, char*, char, int, int)
- * @brief
- *
- * @param pResultado
- * @param mensaje
- * @param mensajeError
- * @param minimo
- * @param maximo
- * @param reintentos
- * @return
- */
+
 int utn_getChar(char* pResultado, char* mensaje, char* mensajeError, char minimo, int maximo, int reintentos)
 {
 	int retorno = -1;
